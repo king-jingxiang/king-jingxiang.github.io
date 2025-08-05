@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
     new NavigationManager();
     new SmoothScrollManager();
     new AnimationManager();
-    new CodeCopyManager();
+    // new CodeCopyManager(); // 已禁用复制按钮功能
     new BackToTopManager();
 });
 
