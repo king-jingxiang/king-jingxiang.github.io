@@ -1,0 +1,59 @@
+{
+  "site": {
+    "title": "技术分享 - 个人博客",
+    "description": "分享前端、后端、AI等技术心得",
+    "author": "Your Name",
+    "url": "https://your-username.github.io",
+    "avatar": "assets/images/avatar.jpg"
+  },
+  "navigation": [
+    {
+      "name": "首页",
+      "url": "index.html"
+    },
+    {
+      "name": "技术栈",
+      "url": "tech-stack.html"
+    },
+    {
+      "name": "文章",
+      "url": "posts.html"
+    },
+    {
+      "name": "关于",
+      "url": "about.html"
+    }
+  ],
+  "techStacks": [
+    {
+      "category": "前端开发",
+      "slug": "frontend",
+      "technologies": ["JavaScript", "TypeScript", "React", "Vue.js", "HTML5", "CSS3"],
+      "color": "#61dafb"
+    },
+    {
+      "category": "后端开发", 
+      "slug": "backend",
+      "technologies": ["Node.js", "Python", "Java", "Go", "Express", "Django"],
+      "color": "#68d391"
+    },
+    {
+      "category": "数据库",
+      "slug": "database",
+      "technologies": ["MySQL", "PostgreSQL", "MongoDB", "Redis"],
+      "color": "#f6ad55"
+    },
+    {
+      "category": "AI/机器学习",
+      "slug": "ai-ml",
+      "technologies": ["TensorFlow", "PyTorch", "OpenAI", "LangChain"],
+      "color": "#9f7aea"
+    },
+    {
+      "category": "工具链",
+      "slug": "tools",
+      "technologies": ["Git", "Docker", "Kubernetes", "AWS", "Webpack"],
+      "color": "#fc8181"
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Web开发最佳实践 - 技术分享 - 个人博客</title>
+    <meta name="description" content="Python Web开发最佳实践 - 技术分享文章">
+    <meta name="author" content="Your Name">
+    <meta name="keywords" content="技术分享,编程,开发,后端开发">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Python Web开发最佳实践">
+    <meta property="og:description" content="Python Web开发最佳实践 - 技术分享文章">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">技术分享 - 个人博客</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">首页</a></li>
+                <li><a href="../tech-stack.html" class="nav-link">技术栈</a></li>
+                <li><a href="../posts.html" class="nav-link">文章</a></li>
+                <li><a href="../about.html" class="nav-link">关于</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="切换主题">🌙</button>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 文章头部 -->
+            <header class="article-header">
+                <h1 class="article-title">Python Web开发最佳实践</h1>
+                <div class="article-meta">
+                    <span class="date">2024-01-15</span>
+                    <span class="category">后端开发</span>
+                    <div class="tags"><span class="tag">[Python, Django, Flask, Web开发]</span></div>
+                </div>
+            </header>
+
+            <!-- 目录 -->
+            <div class="toc">
+<ul>
+<li><a href="#python-web">Python Web开发最佳实践</a><ul>
+<li><a href="#_1">框架选择</a><ul>
+<li><a href="#django">Django</a></li>
+<li><a href="#flask">Flask</a></li>
+</ul>
+</li>
+<li><a href="#_2">数据库操作</a><ul>
+<li><a href="#orm">ORM使用</a></li>
+</ul>
+</li>
+<li><a href="#_3">性能优化</a></li>
+<li><a href="#_4">安全最佳实践</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+            <!-- 文章内容 -->
+            <article class="article-content">
+                <h1 id="python-web">Python Web开发最佳实践</h1>
+<p>Python作为一门强大的编程语言，在Web开发领域有着广泛的应用。本文将介绍Python Web开发的最佳实践。</p>
+<h2 id="_1">框架选择</h2>
+<h3 id="django">Django</h3>
+<p>Django是一个高级的Python Web框架，遵循"约定优于配置"的原则：</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Django视图示例</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">JsonResponse</span>
+
+<span class="k">def</span> <span class="nf">api_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="s1">&#39;Hello from Django!&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;success&#39;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="flask">Flask</h3>
+<p>Flask是一个轻量级的Web框架，提供了更多的灵活性：</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Flask应用示例</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/api/data&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_data</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span>
+        <span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="s1">&#39;Hello from Flask!&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;success&#39;</span>
+    <span class="p">})</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="_2">数据库操作</h2>
+<h3 id="orm">ORM使用</h3>
+<p>使用ORM可以简化数据库操作：</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Django ORM示例</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">EmailField</span><span class="p">()</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 查询操作</span>
+<span class="n">users</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username__icontains</span><span class="o">=</span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="_3">性能优化</h2>
+<ol>
+<li><strong>数据库查询优化</strong></li>
+<li>使用select_related和prefetch_related</li>
+<li>
+<p>避免N+1查询问题</p>
+</li>
+<li>
+<p><strong>缓存策略</strong></p>
+</li>
+<li>Redis缓存</li>
+<li>
+<p>数据库查询缓存</p>
+</li>
+<li>
+<p><strong>异步处理</strong></p>
+</li>
+<li>Celery任务队列</li>
+<li>异步视图</li>
+</ol>
+<h2 id="_4">安全最佳实践</h2>
+<ul>
+<li>CSRF保护</li>
+<li>SQL注入防护</li>
+<li>XSS防护</li>
+<li>用户认证和授权</li>
+</ul>
+<p>Python Web开发需要综合考虑性能、安全性和可维护性，选择合适的框架和工具链是成功的关键。</p>
+            </article>
+
+            <!-- 返回链接 -->
+            <div class="article-navigation">
+                <a href="../posts.html" class="cta-button">返回文章列表</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 技术分享 - 个人博客. 基于 GitHub Pages 构建</p>
+            <p>专注于技术分享与交流</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

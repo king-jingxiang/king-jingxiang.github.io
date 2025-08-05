@@ -1,1 +1,124 @@
-Hello World
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术分享 - 个人博客</title>
+    <meta name="description" content="专注于前端、后端、AI等技术分享的个人博客">
+    <meta name="author" content="Your Name">
+    <meta name="keywords" content="技术分享,编程,开发,前端,后端,AI">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="技术分享 - 个人博客">
+    <meta property="og:description" content="专注于前端、后端、AI等技术分享的个人博客">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">技术分享</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">首页</a></li>
+                <li><a href="tech-stack.html" class="nav-link">技术栈</a></li>
+                <li><a href="posts.html" class="nav-link">文章</a></li>
+                <li><a href="about.html" class="nav-link">关于</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="切换主题">🌙</button>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 英雄区域 -->
+            <section class="hero">
+                <h1>欢迎来到我的技术分享空间</h1>
+                <p>在这里，我分享前端、后端、AI等技术领域的学习心得与实践经验，与你一起探索技术的无限可能。</p>
+                <a href="posts.html" class="cta-button">开始阅读</a>
+            </section>
+
+            <!-- 技术栈预览 -->
+            <section class="tech-preview">
+                <h2>技术栈</h2>
+                <div class="tech-grid">
+                    <div class="tech-category">
+                        <h3>前端开发</h3>
+                        <div class="tech-items">
+                            <span class="tech-item frontend">JavaScript</span>
+                            <span class="tech-item frontend">TypeScript</span>
+                            <span class="tech-item frontend">React</span>
+                            <span class="tech-item frontend">Vue.js</span>
+                        </div>
+                    </div>
+                    <div class="tech-category">
+                        <h3>后端开发</h3>
+                        <div class="tech-items">
+                            <span class="tech-item backend">Node.js</span>
+                            <span class="tech-item backend">Python</span>
+                            <span class="tech-item backend">Java</span>
+                            <span class="tech-item backend">Go</span>
+                        </div>
+                    </div>
+                    <div class="tech-category">
+                        <h3>AI/机器学习</h3>
+                        <div class="tech-items">
+                            <span class="tech-item ai">TensorFlow</span>
+                            <span class="tech-item ai">PyTorch</span>
+                            <span class="tech-item ai">OpenAI</span>
+                            <span class="tech-item ai">LangChain</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-more">
+                    <a href="tech-stack.html" class="cta-button">查看完整技术栈</a>
+                </div>
+            </section>
+
+            <!-- 最新文章 -->
+            <section class="recent-posts">
+                <h2>最新文章</h2>
+                <div class="posts-grid">
+                    <article class="post-item">
+                        <h3><a href="#" onclick="alert('请先添加Markdown文章并运行构建脚本')">欢迎使用技术分享博客</a></h3>
+                        <div class="post-meta">
+                            <span class="date">2024-01-01</span>
+                            <span class="category">使用指南</span>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">博客</span>
+                            <span class="tag">指南</span>
+                        </div>
+                        <p>这是一个示例文章。请在posts目录下添加Markdown文件，然后运行构建脚本生成HTML页面。</p>
+                    </article>
+                </div>
+                <div class="posts-more">
+                    <a href="posts.html" class="cta-button">查看所有文章</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 技术分享. 基于 GitHub Pages 构建</p>
+            <p>专注于技术分享与交流</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

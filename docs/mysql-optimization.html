@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySQL性能优化实战指南 - 技术分享 - 个人博客</title>
+    <meta name="description" content="MySQL性能优化实战指南 - 技术分享文章">
+    <meta name="author" content="Your Name">
+    <meta name="keywords" content="技术分享,编程,开发,数据库">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="MySQL性能优化实战指南">
+    <meta property="og:description" content="MySQL性能优化实战指南 - 技术分享文章">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">技术分享 - 个人博客</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">首页</a></li>
+                <li><a href="../tech-stack.html" class="nav-link">技术栈</a></li>
+                <li><a href="../posts.html" class="nav-link">文章</a></li>
+                <li><a href="../about.html" class="nav-link">关于</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="切换主题">🌙</button>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 文章头部 -->
+            <header class="article-header">
+                <h1 class="article-title">MySQL性能优化实战指南</h1>
+                <div class="article-meta">
+                    <span class="date">2024-01-10</span>
+                    <span class="category">数据库</span>
+                    <div class="tags"><span class="tag">[MySQL, 数据库优化, 索引, 性能调优]</span></div>
+                </div>
+            </header>
+
+            <!-- 目录 -->
+            <div class="toc">
+<ul>
+<li><a href="#mysql">MySQL性能优化实战指南</a><ul>
+<li><a href="#_1">索引优化</a><ul>
+<li><a href="#_2">创建合适的索引</a></li>
+<li><a href="#_3">索引使用原则</a></li>
+</ul>
+</li>
+<li><a href="#_4">查询优化</a><ul>
+<li><a href="#explain">EXPLAIN分析</a></li>
+<li><a href="#_5">避免全表扫描</a></li>
+</ul>
+</li>
+<li><a href="#_6">配置优化</a><ul>
+<li><a href="#_7">关键参数调优</a></li>
+<li><a href="#_8">监控指标</a></li>
+</ul>
+</li>
+<li><a href="#_9">架构优化</a><ul>
+<li><a href="#_10">读写分离</a></li>
+<li><a href="#_11">分库分表</a></li>
+</ul>
+</li>
+<li><a href="#_12">实战案例</a><ul>
+<li><a href="#_13">慢查询优化</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+            <!-- 文章内容 -->
+            <article class="article-content">
+                <h1 id="mysql">MySQL性能优化实战指南</h1>
+<p>数据库性能优化是后端开发中的重要技能。本文将详细介绍MySQL性能优化的各种技巧和最佳实践。</p>
+<h2 id="_1">索引优化</h2>
+<h3 id="_2">创建合适的索引</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- 单列索引</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_user_email</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">users</span><span class="p">(</span><span class="n">email</span><span class="p">);</span>
+
+<span class="c1">-- 复合索引</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_user_status_created</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">users</span><span class="p">(</span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">created_at</span><span class="p">);</span>
+
+<span class="c1">-- 唯一索引</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_user_username</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">users</span><span class="p">(</span><span class="n">username</span><span class="p">);</span>
+</code></pre></div>
+
+<h3 id="_3">索引使用原则</h3>
+<ol>
+<li><strong>最左前缀原则</strong></li>
+<li><strong>避免在索引列上使用函数</strong></li>
+<li><strong>选择性高的列优先</strong></li>
+</ol>
+<h2 id="_4">查询优化</h2>
+<h3 id="explain">EXPLAIN分析</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">EXPLAIN</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;active&#39;</span><span class="w"> </span>
+<span class="k">AND</span><span class="w"> </span><span class="n">created_at</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="s1">&#39;2024-01-01&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<h3 id="_5">避免全表扫描</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- 不好的查询</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">YEAR</span><span class="p">(</span><span class="n">created_at</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2024</span><span class="p">;</span>
+
+<span class="c1">-- 优化后的查询</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">created_at</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2024-01-01&#39;</span><span class="w"> </span>
+<span class="k">AND</span><span class="w"> </span><span class="n">created_at</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s1">&#39;2025-01-01&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<h2 id="_6">配置优化</h2>
+<h3 id="_7">关键参数调优</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># my.cnf配置示例</span>
+<span class="k">[mysqld]</span>
+<span class="na">innodb_buffer_pool_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1G</span>
+<span class="na">innodb_log_file_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">256M</span>
+<span class="na">query_cache_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128M</span>
+<span class="na">max_connections</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">200</span>
+</code></pre></div>
+
+<h3 id="_8">监控指标</h3>
+<ul>
+<li>慢查询日志</li>
+<li>连接数监控</li>
+<li>缓存命中率</li>
+<li>锁等待时间</li>
+</ul>
+<h2 id="_9">架构优化</h2>
+<h3 id="_10">读写分离</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Django数据库路由示例</span>
+<span class="k">class</span> <span class="nc">DatabaseRouter</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">db_for_read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;slave&#39;</span>
+
+    <span class="k">def</span> <span class="nf">db_for_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">hints</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;master&#39;</span>
+</code></pre></div>
+
+<h3 id="_11">分库分表</h3>
+<ul>
+<li>垂直分库：按业务模块</li>
+<li>水平分表：按数据量</li>
+</ul>
+<h2 id="_12">实战案例</h2>
+<h3 id="_13">慢查询优化</h3>
+<ol>
+<li><strong>识别慢查询</strong></li>
+<li><strong>分析执行计划</strong></li>
+<li><strong>添加合适索引</strong></li>
+<li><strong>重写查询语句</strong></li>
+</ol>
+<p>通过系统性的优化，可以显著提升MySQL数据库的性能表现。</p>
+            </article>
+
+            <!-- 返回链接 -->
+            <div class="article-navigation">
+                <a href="../posts.html" class="cta-button">返回文章列表</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 技术分享 - 个人博客. 基于 GitHub Pages 构建</p>
+            <p>专注于技术分享与交流</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>机器学习入门指南 - 技术分享 - 个人博客</title>
+    <meta name="description" content="机器学习入门指南 - 技术分享文章">
+    <meta name="author" content="Your Name">
+    <meta name="keywords" content="技术分享,编程,开发,AI/机器学习">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="机器学习入门指南">
+    <meta property="og:description" content="机器学习入门指南 - 技术分享文章">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">技术分享 - 个人博客</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">首页</a></li>
+                <li><a href="../tech-stack.html" class="nav-link">技术栈</a></li>
+                <li><a href="../posts.html" class="nav-link">文章</a></li>
+                <li><a href="../about.html" class="nav-link">关于</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="切换主题">🌙</button>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 文章头部 -->
+            <header class="article-header">
+                <h1 class="article-title">机器学习入门指南</h1>
+                <div class="article-meta">
+                    <span class="date">2024-01-20</span>
+                    <span class="category">AI/机器学习</span>
+                    <div class="tags"><span class="tag">[机器学习, Python, scikit-learn, 数据科学]</span></div>
+                </div>
+            </header>
+
+            <!-- 目录 -->
+            <div class="toc">
+<ul>
+<li><a href="#_1">机器学习入门指南</a><ul>
+<li><a href="#_2">机器学习基础</a><ul>
+<li><a href="#_3">什么是机器学习</a></li>
+<li><a href="#_4">主要类型</a></li>
+</ul>
+</li>
+<li><a href="#_5">常用算法</a><ul>
+<li><a href="#_6">线性回归</a></li>
+<li><a href="#_7">决策树</a></li>
+</ul>
+</li>
+<li><a href="#_8">数据预处理</a><ul>
+<li><a href="#_9">数据清洗</a></li>
+<li><a href="#_10">特征工程</a></li>
+</ul>
+</li>
+<li><a href="#_11">模型评估</a><ul>
+<li><a href="#_12">分类指标</a></li>
+<li><a href="#_13">交叉验证</a></li>
+</ul>
+</li>
+<li><a href="#_14">实践项目</a><ul>
+<li><a href="#_15">房价预测</a></li>
+<li><a href="#_16">文本分类</a></li>
+</ul>
+</li>
+<li><a href="#_17">学习路径</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+            <!-- 文章内容 -->
+            <article class="article-content">
+                <h1 id="_1">机器学习入门指南</h1>
+<p>机器学习是人工智能的核心技术之一。本文将为初学者介绍机器学习的基本概念和实践方法。</p>
+<h2 id="_2">机器学习基础</h2>
+<h3 id="_3">什么是机器学习</h3>
+<p>机器学习是一种让计算机从数据中学习规律，并对新数据进行预测的技术。</p>
+<h3 id="_4">主要类型</h3>
+<ol>
+<li><strong>监督学习</strong>：有标签数据训练</li>
+<li><strong>无监督学习</strong>：无标签数据挖掘</li>
+<li><strong>强化学习</strong>：通过奖励机制学习</li>
+</ol>
+<h2 id="_5">常用算法</h2>
+<h3 id="_6">线性回归</h3>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># 创建示例数据</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># 分割数据</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># 训练模型</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 预测</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="_7">决策树</h3>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+
+<span class="c1"># 加载数据</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
+
+<span class="c1"># 训练决策树</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># 特征重要性</span>
+<span class="n">feature_importance</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">feature_importances_</span>
+</code></pre></div>
+
+<h2 id="_8">数据预处理</h2>
+<h3 id="_9">数据清洗</h3>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="c1"># 处理缺失值</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+<span class="c1"># 标准化</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="_10">特征工程</h3>
+<ul>
+<li>特征选择</li>
+<li>特征变换</li>
+<li>特征组合</li>
+</ul>
+<h2 id="_11">模型评估</h2>
+<h3 id="_12">分类指标</h3>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span>
+
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;weighted&#39;</span><span class="p">)</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;weighted&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="_13">交叉验证</h3>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;平均准确率: </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="_14">实践项目</h2>
+<h3 id="_15">房价预测</h3>
+<ol>
+<li>数据收集和清洗</li>
+<li>特征工程</li>
+<li>模型选择和训练</li>
+<li>结果评估和优化</li>
+</ol>
+<h3 id="_16">文本分类</h3>
+<ol>
+<li>文本预处理</li>
+<li>特征提取（TF-IDF）</li>
+<li>模型训练</li>
+<li>性能评估</li>
+</ol>
+<h2 id="_17">学习路径</h2>
+<ol>
+<li><strong>数学基础</strong>：线性代数、概率统计</li>
+<li><strong>编程技能</strong>：Python、R</li>
+<li><strong>工具掌握</strong>：scikit-learn、pandas</li>
+<li><strong>实践项目</strong>：Kaggle竞赛</li>
+</ol>
+<p>机器学习是一个需要理论与实践相结合的领域，持续学习和实践是提高的关键。</p>
+            </article>
+
+            <!-- 返回链接 -->
+            <div class="article-navigation">
+                <a href="../posts.html" class="cta-button">返回文章列表</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 技术分享 - 个人博客. 基于 GitHub Pages 构建</p>
+            <p>专注于技术分享与交流</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

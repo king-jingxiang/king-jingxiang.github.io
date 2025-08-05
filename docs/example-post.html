@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>如何使用这个技术分享博客 - 技术分享 - 个人博客</title>
+    <meta name="description" content="如何使用这个技术分享博客 - 技术分享文章">
+    <meta name="author" content="Your Name">
+    <meta name="keywords" content="技术分享,编程,开发,使用指南">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="如何使用这个技术分享博客">
+    <meta property="og:description" content="如何使用这个技术分享博客 - 技术分享文章">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">技术分享 - 个人博客</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">首页</a></li>
+                <li><a href="../tech-stack.html" class="nav-link">技术栈</a></li>
+                <li><a href="../posts.html" class="nav-link">文章</a></li>
+                <li><a href="../about.html" class="nav-link">关于</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="切换主题">🌙</button>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 文章头部 -->
+            <header class="article-header">
+                <h1 class="article-title">如何使用这个技术分享博客</h1>
+                <div class="article-meta">
+                    <span class="date">2024-01-01</span>
+                    <span class="category">使用指南</span>
+                    <div class="tags"><span class="tag">[博客, 指南, Markdown]</span></div>
+                </div>
+            </header>
+
+            <!-- 目录 -->
+            <div class="toc">
+<ul>
+<li><a href="#_1">如何使用这个技术分享博客</a><ul>
+<li><a href="#_2">功能特性</a></li>
+<li><a href="#_3">如何添加新文章</a><ul>
+<li><a href="#1-markdown">1. 创建Markdown文件</a></li>
+<li><a href="#2">2. 添加文章元数据</a></li>
+<li><a href="#3">3. 编写文章内容</a></li>
+<li><a href="#4">4. 运行构建脚本</a></li>
+</ul>
+</li>
+<li><a href="#_4">自定义配置</a></li>
+<li><a href="#_5">技术栈配置</a></li>
+<li><a href="#github-pages">部署到GitHub Pages</a></li>
+<li><a href="#_6">代码示例</a><ul>
+<li><a href="#_7">代码块</a></li>
+<li><a href="#_8">表格</a></li>
+<li><a href="#_9">引用</a></li>
+</ul>
+</li>
+<li><a href="#_10">总结</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+            <!-- 文章内容 -->
+            <article class="article-content">
+                <h1 id="_1">如何使用这个技术分享博客</h1>
+<p>欢迎使用这个基于GitHub Pages的技术分享博客！这篇文章将指导你如何使用这个博客系统来发布你的技术文章。</p>
+<h2 id="_2">功能特性</h2>
+<p>这个博客系统具有以下特性：</p>
+<ul>
+<li>📝 <strong>Markdown支持</strong> - 使用Markdown格式编写文章</li>
+<li>🎨 <strong>响应式设计</strong> - 支持桌面和移动设备</li>
+<li>🌙 <strong>深色主题</strong> - 支持深色/浅色主题切换</li>
+<li>🏷️ <strong>标签分类</strong> - 文章支持标签和分类</li>
+<li>🔍 <strong>搜索功能</strong> - 支持文章搜索</li>
+<li>📱 <strong>现代化UI</strong> - 简洁美观的用户界面</li>
+</ul>
+<h2 id="_3">如何添加新文章</h2>
+<h3 id="1-markdown">1. 创建Markdown文件</h3>
+<p>在 <code>posts/</code> 目录下创建一个新的 <code>.md</code> 文件，文件名建议使用英文和连字符，例如：</p>
+<div class="codehilite"><pre><span></span><code>posts/my-first-post.md
+posts/javascript-tips.md
+posts/react-best-practices.md
+</code></pre></div>
+
+<h3 id="2">2. 添加文章元数据</h3>
+<p>在Markdown文件的开头添加YAML格式的元数据：</p>
+<div class="codehilite"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">文章标题</span>
+<span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2024-01-01</span>
+<span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">分类名称</span>
+<span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">标签1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">标签2</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">标签3</span><span class="p p-Indicator">]</span>
+<span class="nn">---</span>
+</code></pre></div>
+
+<h3 id="3">3. 编写文章内容</h3>
+<p>在元数据下方使用Markdown语法编写文章内容：</p>
+<div class="codehilite"><pre><span></span><code><span class="gh"># 主标题</span>
+
+这是文章的正文内容...
+
+<span class="gu">## 二级标题</span>
+
+<span class="gu">### 三级标题</span>
+
+<span class="k">-</span><span class="w"> </span>列表项1
+<span class="k">-</span><span class="w"> </span>列表项2
+
+代码示例：
+
+```javascript
+function hello() {
+    console.log(&quot;Hello, World!&quot;);
+}
+</code></pre></div>
+
+<h3 id="4">4. 运行构建脚本</h3>
+<p>添加文章后，运行构建脚本生成HTML页面：</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 安装依赖（首次使用）</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># 运行构建脚本</span>
+python<span class="w"> </span>scripts/build.py
+</code></pre></div>
+
+<h2 id="_4">自定义配置</h2>
+<p>你可以通过修改 <code>config/site.json</code> 文件来自定义网站配置：</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;site&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;你的网站标题&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;网站描述&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;你的名字&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://your-username.github.io&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="_5">技术栈配置</h2>
+<p>在 <code>config/site.json</code> 中的 <code>techStacks</code> 部分可以配置你的技术栈：</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;techStacks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;前端开发&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;technologies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;JavaScript&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;React&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Vue.js&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#61dafb&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="github-pages">部署到GitHub Pages</h2>
+<ol>
+<li>将代码推送到GitHub仓库</li>
+<li>在仓库设置中启用GitHub Pages</li>
+<li>选择从根目录部署</li>
+<li>你的网站将在 <code>https://your-username.github.io</code> 可用</li>
+</ol>
+<h2 id="_6">代码示例</h2>
+<p>这里是一些常用的Markdown语法示例：</p>
+<h3 id="_7">代码块</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+
+<h3 id="_8">表格</h3>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>支持</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Markdown</td>
+<td>✅</td>
+<td>完全支持</td>
+</tr>
+<tr>
+<td>代码高亮</td>
+<td>✅</td>
+<td>支持多种语言</td>
+</tr>
+<tr>
+<td>数学公式</td>
+<td>❌</td>
+<td>暂不支持</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">引用</h3>
+<blockquote>
+<p>这是一个引用示例。你可以用它来突出重要的信息或引用他人的话。</p>
+</blockquote>
+<h2 id="_10">总结</h2>
+<p>这个博客系统为技术分享提供了一个简单而强大的平台。通过Markdown编写文章，自动生成美观的HTML页面，让你专注于内容创作而不是技术细节。</p>
+<p>开始你的技术分享之旅吧！🚀</p>
+            </article>
+
+            <!-- 返回链接 -->
+            <div class="article-navigation">
+                <a href="../posts.html" class="cta-button">返回文章列表</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 技术分享 - 个人博客. 基于 GitHub Pages 构建</p>
+            <p>专注于技术分享与交流</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
