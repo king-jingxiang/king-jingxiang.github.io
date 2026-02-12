@@ -1,4 +1,6 @@
-# Personal Website (v2)
+# Personal Website
+
+[中文](./README_ZH.md)
 
 A modern, dynamic personal portfolio website built with React, TypeScript, and Vite. This project showcases technical skills, open-source contributions, and technical articles with a high-quality, design-focused interface.
 
@@ -42,10 +44,10 @@ This project aims to build a personal website that separates data from views, ho
 
 ```bash
 # Clone the repository
-git clone https://github.com/king-jingxiang/king-jingxiang.github.io_v2.git
+git clone https://github.com/king-jingxiang/king-jingxiang.github.io.git
 
 # Enter the directory
-cd king-jingxiang.github.io_v2
+cd king-jingxiang.github.io
 
 # Install dependencies
 pnpm install
