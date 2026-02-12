@@ -5,13 +5,17 @@ import rehypeHighlight from "rehype-highlight"
 import { getArticle } from "@/lib/api"
 import "highlight.js/styles/github-dark.css"
 
+const removeFrontMatter = (text: string) => {
+  return text.replace(/^---\n[\s\S]*?\n---\n?/, "")
+}
+
 export function ArticleDetail() {
   const { slug } = useParams()
   const [content, setContent] = useState<string | null>(null)
 
   useEffect(() => {
     if (slug) {
-      getArticle(slug).then(setContent)
+      getArticle(slug).then((text) => setContent(removeFrontMatter(text)))
     }
   }, [slug])
 

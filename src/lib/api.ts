@@ -14,6 +14,7 @@ export interface Article {
   category: string
   date: string
   slug: string
+  tags: string[]
   cover?: string
 }
 
@@ -56,6 +57,7 @@ export const MOCK_ARTICLES: Article[] = [
     category: "Frontend",
     date: "2023-10-01",
     slug: "building-modern-personal-website",
+    tags: ["React", "Vite", "Tailwind CSS", "Web Design"],
   },
   {
     title: "Understanding React Server Components",
@@ -63,6 +65,7 @@ export const MOCK_ARTICLES: Article[] = [
     category: "React",
     date: "2023-09-15",
     slug: "understanding-rsc",
+    tags: ["React", "Server Components", "Architecture", "Performance"],
   },
   {
     title: "The Future of Web Development",
@@ -70,6 +73,7 @@ export const MOCK_ARTICLES: Article[] = [
     category: "Tech",
     date: "2023-08-20",
     slug: "future-web-dev",
+    tags: ["Trends", "Web Assembly", "AI", "Future"],
   },
 ]
 
