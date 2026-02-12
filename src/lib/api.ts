@@ -74,18 +74,15 @@ export const MOCK_ARTICLES: Article[] = [
 ]
 
 export async function getProjects(): Promise<Project[]> {
-  const username = "king-jingxiang"
+  // Use S3 hosted file to avoid GitHub API rate limits (403 Forbidden)
+  // The file should be a JSON dump of: https://api.github.com/users/king-jingxiang/repos?sort=pushed&per_page=6
   try {
-    const response = await fetch(`https://api.github.com/users/${username}/repos?sort=pushed&per_page=6`)
+    const response = await fetch(`${S3_BASE_URL}/king-jingxiang/top-projects.json`)
     if (!response.ok) {
       throw new Error("Failed to fetch projects")
     }
     const data = await response.json()
-    // Filter out forks if desired, or sort by stars.
-    // The design doc says: "prioritize pinned (not available in API) -> star count".
-    // API sort by 'pushed' or 'updated' or 'full_name'.
-    // We can fetch more and sort locally.
-    // But for now, let's just return what we get, maybe sort by stars.
+    // Sort by stars as per design doc preference (data from S3 might not be sorted dynamically)
     return data.sort((a: Project, b: Project) => b.stargazers_count - a.stargazers_count)
   } catch (error) {
     console.warn("Using mock projects due to error:", error)
